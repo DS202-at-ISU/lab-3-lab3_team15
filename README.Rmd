@@ -38,7 +38,7 @@ deaths <- av %>% pivot_longer(cols = starts_with("Death"), names_to = "Time", va
 deaths <- deaths %>% mutate(
   Time = parse_number(Time))
 
-maxdeaths = deaths %>% filter(Died != "") %>% group_by(URL, Died) %>% summarise(maxDied = max(Time, na.rm = TRUE))
+maxdeaths = deaths %>% filter(Died != "") %>% group_by(URL, Died) %>% mutate(Time = max(Time, na.rm = TRUE))
 )
 ```
 
