@@ -39,7 +39,7 @@ deaths <- deaths %>% mutate(
   Time = parse_number(Time))
 
 maxdeaths = deaths %>% filter(Died != "") %>% group_by(URL, Died) %>% mutate(Time = max(Time, na.rm = TRUE))
-)
+
 ```
 
 
