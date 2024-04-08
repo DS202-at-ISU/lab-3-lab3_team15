@@ -40,6 +40,8 @@ deaths <- deaths %>% mutate(
 
 deaths = deaths %>% filter(Died != "") %>% group_by(URL, Died) %>% mutate(Time = max(Time, na.rm = TRUE))
 
+deaths <- deaths %>% unique()
+
 meanDeath <- mean(deaths$Time)
 
 ```
@@ -56,14 +58,13 @@ returns <- returns %>% mutate(
 
 returns = returns %>% filter(Returned != "") %>% group_by(URL, Returned) %>% mutate(Time = max(Time, na.rm = TRUE))
 
+returns <- returns %>% unique()
+
 meanReturn <- mean(returns$Time)
 
 ```
 
 **We observe that there are 1.49 returns on average. **
-
-
-Based on these datasets calculate the average number of deaths an Avenger suffers. 
 
 
 
@@ -103,7 +104,17 @@ average_permanent_death_frequency
 
 ```
 
+FiveThirtyEight statement:
+"Out of 173 listed Avengers, my analysis found that 69 had died at least one time after they joined the team"
+
+```{r}
+#Vinayak Trigunayat
+numAvengers <- nrow(av)
+avengersWhoDied <- deaths %>% filter(Died == "YES")
+numAvengersDied <- nrow(avengersWhoDied)
+```
+**We see that this result is true, since the number of rows of avengersWhoDied is 69, and the original dataframe, av, has 173 rows. **
+
 Upload your changes to the repository. Discuss and refine answers as a team.
 
 
-add testing text
