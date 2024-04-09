@@ -115,6 +115,28 @@ numAvengersDied <- nrow(avengersWhoDied)
 ```
 **We see that this result is true, since the number of rows of avengersWhoDied is 69, and the original dataframe, av, has 173 rows. **
 
+
+FiveThirtyEight statement:
+"Of the nine Avengers we see on screen — Iron Man, Hulk, Captain America, Thor, Hawkeye, Black Widow, Scarlet Witch, Quicksilver and The Vision — every single one of them has died at least once"
+
+```{r}
+#Luke Juffer
+avengersWhoDied
+heroes_to_exclude <- c("Anthony Edward \"Tony\" Stark", "Robert Bruce Banner", "Steven Rogers", "Thor Odinson", "Clinton Francis Barton", "Natalia Alianovna Romanova", "Wanda Maximoff", "Pietro Maximoff", "Victor Shade (alias)")
+
+at_least_one_missing <- any(!(heroes_to_exclude %in% avengersWhoDied$Name.Alias))
+
+if (at_least_one_missing) {
+  print("At least one excluded hero is missing from avengersWhoDied.")
+} else {
+  print("All excluded heroes are present in avengersWhoDied.")
+}
+
+
+```
+
+FALSE was returned, so all of the original nine avengers have died at least once.
+
 Upload your changes to the repository. Discuss and refine answers as a team.
 
 
